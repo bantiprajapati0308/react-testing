@@ -13,8 +13,7 @@ test('it shows two inputs and a button', () => {
 test('it calls onUserAdd when the form is submitted', async () => {
     const onUserAdd = jest.fn();
     render(<UserForm onUserAdd={onUserAdd} />);
-    const nameInput = screen.getByLabelText('Name');
-    const emailInput = screen.getByLabelText('Email');
+    const [nameInput, emailInput] = screen.getAllByRole('textbox');
     await user.type(nameInput, 'test');
     await user.type(emailInput, 'test');
     const button = screen.getByRole('button');
